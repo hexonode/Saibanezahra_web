@@ -9,6 +9,15 @@ import { loadSlim } from "tsparticles-slim"; // loads tsparticles-slim
 
 const HomePage: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Placeholder images
+  const images = [
+    '/image.jpg',
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
+  ];
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -22,6 +31,15 @@ const HomePage: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
+  // Effect for image swapping
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [images.length]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
@@ -166,6 +184,21 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </main>
+
+      {/* Image Swapping Section */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="relative w-full max-w-5xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden ">
+          {images.map((src, index) => (
+            <img
+              key={src} // Use src as key assuming they are unique
+              src={src}
+              alt={`Highlight ${index + 1}`}
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* <Footer /> */}
     </div>
