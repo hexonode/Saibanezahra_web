@@ -185,6 +185,8 @@ const HomePage: React.FC = () => {
         </div>
       </main>
 
+      <div className='text-center text-2xl font-bold'>EID AL FITR Namaz at Saiban E Zahra Imam Bargah HIGHLIGHTS</div>
+
       {/* Image Swapping Section */}
       <div className="container mx-auto px-4 py-12">
         <div className="relative w-full max-w-5xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden ">
