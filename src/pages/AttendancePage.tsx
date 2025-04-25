@@ -38,7 +38,7 @@ const AttendancePage: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-col bg-lime-50">
+        <div className="min-h-screen flex flex-col bg-white">
             <div className="flex-grow text-gray-900 transition-colors duration-200">
                 <Header showHomeLink={true} />
 
