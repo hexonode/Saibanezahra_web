@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import TabNavigation from '../components/TabNavigation';
 import AttendanceList from '../components/AttendanceList';
 import Footer from '../components/Footer';
-import { fetchMaleAttendanceData } from '../data/attendanceData';
+import { fetchMaleAttendanceData, fetchFemaleAttendanceData } from '../data/attendanceData';
 import { Gender, Person } from '../types/types';
 import { Loader2 } from 'lucide-react';
 
@@ -18,11 +18,16 @@ const AttendancePage: React.FC = () => {
             setIsLoading(true);
             setError(null);
             try {
-                const maleData = await fetchMaleAttendanceData();
-                setAttendanceData(maleData);
+                const [maleData, femaleData] = await Promise.all([
+                    fetchMaleAttendanceData(),
+                    fetchFemaleAttendanceData()
+                ]);
+
+                setAttendanceData([...maleData, ...femaleData]);
             } catch (err) {
                 console.error("Failed to load attendance data:", err);
-                setError('Failed to load attendance data. Please try again later.');
+                const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
+                setError(`Failed to load attendance data: ${errorMessage}`);
                 setAttendanceData([]);
             } finally {
                 setIsLoading(false);
@@ -33,7 +38,7 @@ const AttendancePage: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-col bg-white">
+        <div className="min-h-screen flex flex-col bg-lime-50">
             <div className="flex-grow text-gray-900 transition-colors duration-200">
                 <Header showHomeLink={true} />
 
@@ -62,8 +67,10 @@ const AttendancePage: React.FC = () => {
                             <Loader2 className="h-12 w-12 animate-spin text-lime-600" />
                         </div>
                     ) : error ? (
-                        <div className="text-center py-12 text-red-600">
-                            <p>{error}</p>
+                        <div className="text-center py-12 text-red-600 px-4">
+                            <p className="font-semibold">Error Loading Data</p>
+                            <p className="text-sm">{error}</p>
+                            <p className="text-sm mt-2">Please ensure 'male_attendance.csv' and 'ladies_attendance.csv' are in the /public folder and correctly formatted.</p>
                         </div>
                     ) : (
                         <AttendanceList people={attendanceData} gender={activeTab} />
