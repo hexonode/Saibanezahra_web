@@ -10,7 +10,7 @@ const Header: React.FC<HeaderProps> = ({ showHomeLink = false }) => {
   return (
     <header className="relative">
       {/* Decorative pattern */}
-      <div className="absolute inset-0 bg-[url('https://cdn.discordapp.com/attachments/1317781055532695622/1364671915310186588/2560px-Jamkaran_Mosque-3855.png?ex=680a8542&is=680933c2&hm=488ea83c0cd59a6ac17da86b60016f0e9e3c3c1691802f08734474f0d99b6cdf&')] bg-cover bg-center bg-no-repeat opacity-50" style={{ backgroundPosition: 'center calc(30%)' }}></div>
+      <div className="absolute inset-0 bg-[url('https://i.imgur.com/IkgHXEo.jpeg')] bg-cover bg-center bg-no-repeat opacity-50" style={{ backgroundPosition: 'center calc(30%)' }}></div>
 
       {/* Increased vertical padding: py-12 */}
       <div className="relative container mx-auto px-4 py-20">

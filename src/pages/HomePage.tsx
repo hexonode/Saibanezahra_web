@@ -153,10 +153,10 @@ const HomePage: React.FC = () => {
                   <Clock className="h-10 w-10 transition-transform duration-300 group-hover:rotate-[-15deg]" />
                 </div>
                 <h2 className="text-2xl font-semibold text-center text-gray-800 mb-3">
-                  Future Feature
+                  Recent Umrah Tour 2024
                 </h2>
                 <p className="text-gray-600 mb-6 text-center text-md flex-grow">
-                  More exciting features and information coming soon. Stay tuned!
+                  Saiban e zahra Group, Umrah tour 2024 Highlights
                 </p>
                 <span className="mt-auto inline-block py-2 px-6 bg-gray-400 text-white rounded-full text-center font-medium cursor-not-allowed">
                   Coming Soon
