@@ -23,7 +23,7 @@ const ContactUsPage: React.FC = () => {
                         <div className="grid gap-6">
                             {/* WhatsApp Group Link */}
                             <a
-                                href="https://chat.whatsapp.com/your-group-link"
+                                href="https://chat.whatsapp.com/D4VrNKPkjkv68lFY1DOvbL"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center p-5 bg-green-50 hover:bg-green-100 rounded-lg transition-colors duration-200 border border-green-200"
@@ -39,7 +39,7 @@ const ContactUsPage: React.FC = () => {
 
                             {/* Email */}
                             <a
-                                href="mailto:contact@ramzanexam.org"
+                                href="mailto:Killerlandop12@gmail.com"
                                 className="flex items-center p-5 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors duration-200 border border-blue-200"
                             >
                                 <div className="h-12 w-12 bg-blue-500 rounded-full flex items-center justify-center mr-4 shrink-0">
@@ -47,13 +47,13 @@ const ContactUsPage: React.FC = () => {
                                 </div>
                                 <div className="flex-grow">
                                     <h3 className="text-lg font-semibold text-gray-800">Email</h3>
-                                    <p className="text-gray-600">contact@ramzanexam.org</p>
+                                    <p className="text-gray-600">Killerlandop12@gmail.com</p>
                                 </div>
                             </a>
 
                             {/* Phone */}
                             <a
-                                href="tel:+123456789"
+                                href="tel:+92 0308000298"
                                 className="flex items-center p-5 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors duration-200 border border-purple-200"
                             >
                                 <div className="h-12 w-12 bg-purple-500 rounded-full flex items-center justify-center mr-4 shrink-0">
@@ -61,7 +61,7 @@ const ContactUsPage: React.FC = () => {
                                 </div>
                                 <div className="flex-grow">
                                     <h3 className="text-lg font-semibold text-gray-800">Phone</h3>
-                                    <p className="text-gray-600">+1 (234) 567-890</p>
+                                    <p className="text-gray-600">+92 0308000298</p>
                                 </div>
                             </a>
                         </div>
