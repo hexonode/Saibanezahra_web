@@ -10,6 +10,7 @@ import { loadSlim } from "tsparticles-slim"; // loads tsparticles-slim
 const HomePage: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [aspectRatio, setAspectRatio] = useState(9 / 16);
 
   // Placeholder images
   const images = [
@@ -40,6 +41,24 @@ const HomePage: React.FC = () => {
 
     return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [images.length]);
+
+  // Effect to calculate aspect ratio of the current image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      // Calculate and set aspect ratio (height / width)
+      setAspectRatio(img.naturalHeight / img.naturalWidth);
+    };
+    img.onerror = () => {
+      // Fallback or default aspect ratio if image fails to load
+      setAspectRatio(9 / 16); // Reset to default
+    };
+    img.src = images[currentImageIndex];
+
+    // Optional: Cleanup function if needed, though usually not for Image objects
+    // return () => { img.onload = null; img.onerror = null; }
+
+  }, [currentImageIndex, images]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
@@ -185,17 +204,20 @@ const HomePage: React.FC = () => {
         </div>
       </main>
 
-      <div className='text-center text-2xl font-bold'>EID AL FITR Namaz at Saiban E Zahra Imam Bargah HIGHLIGHTS</div>
-
       {/* Image Swapping Section */}
       <div className="container mx-auto px-4 py-12">
-        <div className="relative w-full max-w-5xl mx-auto h-64 md:h-80 lg:h-96 overflow-hidden ">
+        {/* Responsive container using padding-bottom for aspect ratio */}
+        {/* Removed fixed height classes, added style for paddingBottom */}
+        <div
+          className="relative w-full md:w-[40%] md:mx-auto overflow-hidden rounded-lg shadow-lg bg-gray-100"
+          style={{ paddingBottom: `${aspectRatio * 100}%` }}
+        >
           {images.map((src, index) => (
             <img
               key={src} // Use src as key assuming they are unique
               src={src}
               alt={`Highlight ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
                 }`}
             />
           ))}
