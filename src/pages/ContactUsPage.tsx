@@ -53,7 +53,7 @@ const ContactUsPage: React.FC = () => {
 
                             {/* Phone */}
                             <a
-                                href="tel:+92 0308000298"
+                                href="tel:+923080002986"
                                 className="flex items-center p-5 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors duration-200 border border-purple-200"
                             >
                                 <div className="h-12 w-12 bg-purple-500 rounded-full flex items-center justify-center mr-4 shrink-0">
@@ -61,7 +61,7 @@ const ContactUsPage: React.FC = () => {
                                 </div>
                                 <div className="flex-grow">
                                     <h3 className="text-lg font-semibold text-gray-800">Phone</h3>
-                                    <p className="text-gray-600">+92 0308000298</p>
+                                    <p className="text-gray-600">+923080002986</p>
                                 </div>
                             </a>
                         </div>
